@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    #RewriteCond %{HTTP_HOST} ^(www.)?laravel.fractal512.pp.ua$
+    RewriteCond %{HTTP_HOST} ^(www.)?it-handbook.loc$
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ /public/$1
+    RewriteRule ^(/)?$ public/index.php [L]
+</IfModule>
