@@ -16,9 +16,11 @@ class MessageController extends Controller
      */
     public function respond(Request $request)
     {
-        //dd($request);
-        $service = app(MessageService::class);
-        $service->dispatchRequest($request)->performCallbackRequest();
+
+        $viber = json_decode($request->all()[0], false);
+
+        $service = app(MessageService::class, compact('viber'));
+        $service->dispatchEvents()->performCallbackRequest();
 
         return $service->getResponse();
     }
