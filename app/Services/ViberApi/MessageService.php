@@ -1,10 +1,10 @@
 <?php
 
 
-namespace App\Services;
+namespace App\Services\ViberApi;
 
 
-class ViberMessageService extends ViberService
+class MessageService extends BaseService
 {
     private $keyboard = [
         [

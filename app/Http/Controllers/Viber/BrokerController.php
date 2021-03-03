@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Viber;
 
-use App\Services\ViberBrokerService;
+use App\Services\ViberApi\BrokerService;
 use App\Http\Controllers\Controller;
 
 /**
@@ -23,7 +23,7 @@ class BrokerController extends Controller
      */
     public function checkViberApiRequest()
     {
-        $service = app(ViberBrokerService::class);
+        $service = app(BrokerService::class);
         $service->performGetRequest();
         //$apiResponse = json_decode($service->getResponse(), true);
         $apiResponse = $service->getResponse();

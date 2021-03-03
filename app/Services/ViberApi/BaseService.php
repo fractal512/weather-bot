@@ -1,12 +1,12 @@
 <?php
 
 
-namespace App\Services;
+namespace App\Services\ViberApi;
 
 use GuzzleHttp\Client;
 
 
-class ViberService
+class BaseService
 {
     protected $message;
 

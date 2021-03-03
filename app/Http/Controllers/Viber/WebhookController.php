@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Viber;
 
-use App\Services\ViberWebhookService;
+use App\Services\ViberApi\WebhookService;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Collection;
 
 class WebhookController extends Controller
 {
@@ -15,7 +14,7 @@ class WebhookController extends Controller
      */
     public function setWebhook()
     {
-        $service = app(ViberWebhookService::class);
+        $service = app(WebhookService::class);
         $service->performCallbackRequest();
 
         return $service->getResponse();
@@ -29,7 +28,7 @@ class WebhookController extends Controller
     public function removeWebhook()
     {
         $message = [ "url" => "" ];
-        $service = app(ViberWebhookService::class);
+        $service = app(WebhookService::class);
         $service->setMessage($message)->performCallbackRequest();
 
         return $service->getResponse();

@@ -1,10 +1,10 @@
 <?php
 
 
-namespace App\Services;
+namespace App\Services\ViberApi;
 
 
-class ViberWebhookService extends ViberService
+class WebhookService extends BaseService
 {
     public function __construct(){
         parent::__construct();

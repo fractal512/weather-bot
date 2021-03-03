@@ -1,12 +1,12 @@
 <?php
 
 
-namespace App\Services;
+namespace App\Services\ViberApi;
 
 
 use GuzzleHttp\Client;
 
-class ViberBrokerService extends ViberService
+class BrokerService extends BaseService
 {
     public function __construct(){
         parent::__construct();

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Viber;
 
 use App\Http\Controllers\Controller;
-use App\Services\ViberMessageService;
+use App\Services\ViberApi\MessageService;
 use Illuminate\Http\Request;
 
 class MessageController extends Controller
@@ -17,7 +17,7 @@ class MessageController extends Controller
     public function respond(Request $request)
     {
         //dd($request);
-        $service = app(ViberMessageService::class);
+        $service = app(MessageService::class);
         $service->dispatchRequest($request)->performCallbackRequest();
 
         return $service->getResponse();
