@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Services\ViberBot;
+namespace App\Services\ViberApi;
 
 use App\Models\ViberBotUser;
 use App\Services\WeatherApi\OpenWeatherMapService;

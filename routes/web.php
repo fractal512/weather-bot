@@ -22,7 +22,8 @@ Route::group(['prefix' => config('app.uri')], function() {
     Route::get('/set-webhook', 'Viber\WebhookController@setWebhook')->name('set_webhook');
     Route::get('/remove-webhook', 'Viber\WebhookController@removeWebhook')->name('remove_webhook');
 
-    Route::post('/bot', 'Viber\MessageController@respond')->name('bot');
+    Route::post('/bot', 'Viber\BotController@respond')->name('bot');
+    Route::get('/bot-cron', 'Viber\BotController@doCronJob')->name('bot_cron');
 
     // workaround used for localhost development purposes
     // uses third-party remote hosting as a proxy to communicate with Viber API server from localhost

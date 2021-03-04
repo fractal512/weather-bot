@@ -23,15 +23,36 @@ class BrokerController extends Controller
      */
     public function checkViberApiRequest()
     {
+        return $this->performRequests( route('bot') );
+    }
+
+    /**
+     * Do cron job in development environment.
+     *
+     * @return string
+     */
+    public function doCronJob()
+    {
+        return $this->performRequests( route('bot-cron') );
+    }
+
+    /**
+     * Perform requests.
+     *
+     * @param string $url
+     * @return string
+     */
+    private function performRequests($url)
+    {
         $service = app(BrokerService::class);
         $service->performGetRequest();
         //$apiResponse = json_decode($service->getResponse(), true);
         $apiResponse = $service->getResponse();
 
-        $service->setEndpoint(route('bot'))
-                ->setMessage($apiResponse)
-                //->performGetRequest();
-                ->performCallbackRequest();
+        $service->setEndpoint($url)
+            ->setMessage($apiResponse)
+            //->performGetRequest();
+            ->performCallbackRequest();
 
         //return print_r($service->getResponse(), true);
         return print_r($apiResponse, true);

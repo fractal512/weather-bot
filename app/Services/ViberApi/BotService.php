@@ -3,18 +3,16 @@
 
 namespace App\Services\ViberApi;
 
-
-use App\Services\ViberBot\UserService;
 use App\Services\WeatherApi\OpenWeatherMapService;
 
-class MessageService extends BaseService
+class BotService extends BaseService
 {
     private $viber;
 
     private $keyboard = [
         [
             "Columns" => 3,
-            "BgColor" => "#808B96",
+            "BgColor" => "#00a2e8",
             "ActionType" => "reply",
             "ActionBody" => "1_hour",
             "Text" => "1 hour",
@@ -22,7 +20,7 @@ class MessageService extends BaseService
         ],
         [
             "Columns" => 3,
-            "BgColor" => "#808B96",
+            "BgColor" => "#00a2e8",
             "ActionType" => "reply",
             "ActionBody" => "6_hours",
             "Text" => "6 hours",
@@ -30,7 +28,7 @@ class MessageService extends BaseService
         ],
         [
             "Columns" => 3,
-            "BgColor" => "#808B96",
+            "BgColor" => "#00a2e8",
             "ActionType" => "reply",
             "ActionBody" => "12_hours",
             "Text" => "12 hours",
@@ -38,7 +36,7 @@ class MessageService extends BaseService
         ],
         [
             "Columns" => 3,
-            "BgColor" => "#808B96",
+            "BgColor" => "#00a2e8",
             "ActionType" => "reply",
             "ActionBody" => "24_hours",
             "Text" => "24 hours",
