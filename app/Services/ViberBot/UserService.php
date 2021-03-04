@@ -32,7 +32,7 @@ class UserService
             ->getResponse();
         $decodedResponse = json_decode($response, false);
 
-        if($decodedResponse->cod == 200){
+        if(isset($decodedResponse->cod) && $decodedResponse->cod == 200){
             $user = $this->userDbData->where('viber_user_id', $this->userViberData->sender->id)->first();
             if(!$user){
                 $this->userDbData->viber_user_id = $this->userViberData->sender->id;
@@ -59,5 +59,12 @@ class UserService
                      ->where('viber_user_id', $this->userViberData->sender->id)
                      ->first();
         return $user->getAttribute('city');
+    }
+
+    public function unsubscribe()
+    {
+        $user = $this->userDbData
+            ->where('viber_user_id', $this->userViberData->user_id)
+            ->delete();
     }
 }

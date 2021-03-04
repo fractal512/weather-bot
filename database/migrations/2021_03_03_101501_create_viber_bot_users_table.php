@@ -22,6 +22,7 @@ class CreateViberBotUsersTable extends Migration
             $table->string('city');
             $table->integer('interval');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

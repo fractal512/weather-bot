@@ -72,6 +72,10 @@ class MessageService extends BaseService
                 if( !isset($this->viber->message->text) ) abort(500);
                 $this->dispatchMessageEvent();
                 break;
+            case "unsubscribed":
+                if( !isset($this->viber->user_id) ) abort(500);
+                $this->user->unsubscribe();
+                break;
         }
         return $this;
     }

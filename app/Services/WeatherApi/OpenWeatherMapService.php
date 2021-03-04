@@ -79,9 +79,25 @@ class OpenWeatherMapService
     {
         $response = json_decode($this->response, false);
 
-        if(isset($response->cod) && $response->cod == 200){
+        if( ! isset($response->cod) ||
+            ! isset($response->name) ||
+            ! isset($response->weather[0]->main) ||
+            ! isset($response->weather[0]->description) ||
+            ! isset($response->main->temp) ||
+            ! isset($response->main->feels_like) ||
+            ! isset($response->main->temp_min) ||
+            ! isset($response->main->temp_max) ||
+            ! isset($response->main->pressure) ||
+            ! isset($response->main->humidity) ||
+            ! isset($response->visibility) ||
+            ! isset($response->wind->speed) ||
+            ! isset($response->wind->deg) ||
+            ! isset($response->clouds->all)
+        ) abort(500);
+
+        if($response->cod == 200){
             $output = "Weather in {$response->name}:\r\n";
-            $output .= "{$response->weather[0]->main} {$response->weather[0]->main}\r\n";
+            $output .= "{$response->weather[0]->main} ({$response->weather[0]->description})\r\n";
             $temperature = round($response->main->temp, 1);
             $output .= "Temperature: {$temperature}°C\r\n";
             $temperature = round($response->main->feels_like, 1);
