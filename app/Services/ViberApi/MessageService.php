@@ -115,7 +115,8 @@ class MessageService extends BaseService
     {
         $message['receiver'] = $this->viber->sender->id;
         $message['type'] = 'text';
-        $message['text'] = "The bot will show the weather for, {$this->viber->message->text}!\r\nPlease choose how often would you like to receive weather information?";
+        $city = $this->user->getUserCity();
+        $message['text'] = "The bot will show the weather for $city using service OpenWeather (https://openweathermap.org/).\r\nPlease choose how often would you like to receive weather information?";
         $message['keyboard'] = [
             "Type" => "keyboard",
             "Revision" => 1,

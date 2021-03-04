@@ -82,14 +82,18 @@ class OpenWeatherMapService
         if(isset($response->cod) && $response->cod == 200){
             $output = "Weather in {$response->name}:\r\n";
             $output .= "{$response->weather[0]->main} {$response->weather[0]->main}\r\n";
-            $output .= "Temperature: {$response->main->temp}°C\r\n";
-            $output .= "Feels like: {$response->main->feels_like}°C\r\n";
-            $output .= "Min: {$response->main->temp_min}°C\r\n";
-            $output .= "Max: {$response->main->temp_max}°C\r\n";
-            $output .= "Pressure: {$response->main->pressure}hPa\r\n";
-            $output .= "Humidity: {$response->main->humidity}%\r\n";
-            $output .= "Visibility: {$response->visibility}m\r\n";
-            $output .= "Wind: {$response->wind->speed}m/s (direction: {$response->wind->deg}°)\r\n";
+            $temperature = round($response->main->temp, 1);
+            $output .= "Temperature: {$temperature}°C\r\n";
+            $temperature = round($response->main->feels_like, 1);
+            $output .= "Feels like: {$temperature}°C\r\n";
+            $temperature = round($response->main->temp_min, 1);
+            $output .= "Min. temperature: {$temperature}°C\r\n";
+            $temperature = round($response->main->temp_max, 1);
+            $output .= "Max. temperature: {$temperature}°C\r\n";
+            $output .= "Pressure: {$response->main->pressure} hPa\r\n";
+            $output .= "Humidity: {$response->main->humidity} %\r\n";
+            $output .= "Visibility: {$response->visibility} m\r\n";
+            $output .= "Wind: {$response->wind->speed} m/s (direction: {$response->wind->deg}°)\r\n";
             $output .= "Clouds: {$response->clouds->all}";
         }else{
             $output = "Error occurred while obtaining weather!";
