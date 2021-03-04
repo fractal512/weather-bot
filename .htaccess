@@ -8,3 +8,8 @@
     RewriteRule ^(.*)$ /viber-bot/public/$1
     RewriteRule ^(/)?$ viber-bot/public/index.php [L]
 </IfModule>
+
+<Files ".env">
+  Order Allow,Deny
+  Deny from all
+</Files>

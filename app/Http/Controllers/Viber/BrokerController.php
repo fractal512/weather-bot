@@ -33,7 +33,7 @@ class BrokerController extends Controller
                 //->performGetRequest();
                 ->performCallbackRequest();
 
-        return print_r($service->getResponse(), true);
-        //return print_r($apiResponse, true);
+        //return print_r($service->getResponse(), true);
+        return print_r($apiResponse, true);
     }
 }
