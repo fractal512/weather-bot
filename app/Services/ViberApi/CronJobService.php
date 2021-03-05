@@ -21,8 +21,7 @@ class CronJobService extends BaseService
 
         $users = ViberBotUser::all();
         foreach ($users as $user) {
-            //echo $user->name;
-            //sleep(10);
+
             $this->serveUser($user);
 
             $elapsed = microtime(true) - $start;
