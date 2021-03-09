@@ -37,7 +37,10 @@ class CronJobService extends BaseService
     {
         $now = Carbon::now();
         $diff = $now->diff($user->updated_at);
-        if ( $diff->d == 0 && $diff->h < $user->interval ) return;
+        if ( $diff->d == 0 &&
+             $diff->h < $user->interval &&
+             $diff->i < 59 // production server cron specific hotfix
+        ) return;
 
         $message['receiver'] = $user->viber_user_id;
         $message['type'] = 'text';
