@@ -63,8 +63,8 @@ class UserService
 
     public function unsubscribe()
     {
-        $user = $this->userDbData
-            ->where('viber_user_id', $this->userViberData->user_id)
-            ->delete();
+        $this->userDbData
+             ->where('viber_user_id', $this->userViberData->user_id)
+             ->delete();
     }
 }
