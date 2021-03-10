@@ -8,11 +8,11 @@ Viber chatbot displays weather information for a selected city periodically with
 ### Development and Production modes
 
 #### Development mode
-For development purposes, a custom proxy server was developed (located in the `/pa` project subdirectory). Requests flow in development mode has shown below.
+For development purposes, a custom proxy server was developed (located in the `/pa` project subdirectory). Requests flow in development mode has shown below:
 
 ![Development mode](/blob/assets/viber-bot-development-mode.png?raw=true)
 
-#### Development mode
+#### Production mode
 Requests flow in production mode:
 
 ![Production mode](/blob/assets/viber-bot-production-mode.png?raw=true)
