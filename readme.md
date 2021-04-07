@@ -1,6 +1,6 @@
-## Weather by Fractal512 (Viber chatbot)
+## Weather bot by Fractal512 (Viber)
 
-Viber chatbot displays weather information for a selected city periodically with a selected time interval.
+Viber chatbot displays weather information for a specified city periodically with a selected time interval.
 
 ### Preview
 ![Chatbot preview](/blob/assets/weather-by-fractal512-bot.png?raw=true)

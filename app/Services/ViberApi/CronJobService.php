@@ -16,7 +16,7 @@ class CronJobService extends BaseService
 
     public function run()
     {
-        $timeout = ini_get('max_execution_time') ? (float) (ini_get('max_execution_time')) : (float) 30+10;
+        $timeout = ini_get('max_execution_time') ? (float) (ini_get('max_execution_time')) : (float) 30 + 10;
         $start = microtime(true);
 
         $users = ViberBotUser::all();
@@ -37,10 +37,12 @@ class CronJobService extends BaseService
     {
         $now = Carbon::now();
         $diff = $now->diff($user->updated_at);
-        if ( $diff->d == 0 &&
-             $diff->h < $user->interval &&
-             $diff->i < 59 // production server cron specific hotfix
-        ) return;
+        $diffSec = $diff->s
+            + $diff->i * 60
+            + $diff->h * 60 * 60
+            + $diff->d * 60 * 60 * 24;
+        $userIntervalSec = $user->interval * 60 * 60;
+        if ( $diffSec < $userIntervalSec ) return;
 
         $message['receiver'] = $user->viber_user_id;
         $message['type'] = 'text';
