@@ -41,7 +41,7 @@ class CronJobService extends BaseService
             + $diff->i * 60
             + $diff->h * 60 * 60
             + $diff->d * 60 * 60 * 24;
-        $userIntervalSec = $user->interval * 60 * 60;
+        $userIntervalSec = $user->interval * 60 * 60 - 5;
         if ( $diffSec < $userIntervalSec ) return;
 
         $message['receiver'] = $user->viber_user_id;
